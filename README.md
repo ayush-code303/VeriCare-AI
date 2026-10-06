@@ -233,12 +233,28 @@ DATABASE_URL=sqlite:///./vericare.db
 
 ### 3. Launch the Backend Service
 ```bash
-uvicorn src.backend.main:app --reload --port 8000
+# From repository root:
+python -m uvicorn src.backend.main:app --reload --port 8000
 ```
-- Open `http://localhost:8000/docs` to inspect interactive Swagger / OpenAPI documentation.
-- Health check: `http://localhost:8000/health`.
+- Interactive Swagger / OpenAPI docs: `http://localhost:8000/docs`
+- Service Health check: `http://localhost:8000/health`
+- Automated Test Suite: `python -m pytest src/backend/tests`
 
-### 4. (Optional) Run with Docker Compose
+### 4. Launch the Next.js Physician HITL Dashboard
+```bash
+# Navigate to frontend directory
+cd src/frontend
+
+# Install dependencies (if first time)
+npm install
+
+# Start development server
+npm run dev
+```
+- Open Physician Console: `http://localhost:3000`
+- Production Build: `npm run build`
+
+### 5. (Optional) Run with Docker Compose
 If Docker is installed:
 ```bash
 docker compose up --build
