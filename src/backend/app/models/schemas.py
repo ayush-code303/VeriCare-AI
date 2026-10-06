@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Union
 from enum import Enum
 import uuid
 
@@ -31,7 +31,7 @@ class AtomicClaim(BaseModel):
     claim_id: str
     section: str # subjective, objective, assessment, plan
     assertion_text: str
-    claim_type: str # DIAGNOSIS, LAB_RESULT, DRUG_PRESCRIPTION, SYMPTOM
+    claim_type: str # DIAGNOSIS, LAB_RESULT, DRUG_PRESCRIPTION, SYMPTOM, PROCEDURE
 
 class ClaimVerification(BaseModel):
     claim_id: str
@@ -94,11 +94,15 @@ class ClinicianReviewRequest(BaseModel):
     claim_overrides: List[ClaimOverride]
     signature_token: Optional[str] = None
 
+class MerkleProofStep(BaseModel):
+    position: str # "left" or "right"
+    hash: str
+
 class LedgerAnchorResponse(BaseModel):
     encounter_id: str
     canonical_sha256: str
     merkle_root: str
-    merkle_proof: List[str]
+    merkle_proof: List[MerkleProofStep]
     blockchain_network: str
     contract_address: str
     tx_hash: str

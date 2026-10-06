@@ -2,7 +2,8 @@
   {
     "case_id": "CASE-001",
     "case_title": "Severe Renal Contraindication (High Drama Alert)",
-    "description": "Patient with uncontrolled diabetes and hidden acute renal failure. Prescribed Metformin, triggering VeriCare's Adversarial Auditor.",
+    "description": "Patient with uncontrolled diabetes and hidden acute renal failure. Prescribed Metformin, triggering VeriCare's Adversarial Auditor with a critical red flag.",
+    "expected_verdict": "FLAGGED_REVIEW",
     "payload": {
       "physician_id": "DR-4019",
       "raw_notes": "64yo male patient presents for diabetic routine review. Feeling persistently fatigued. Glucose poorly managed. Plan to maintain Metformin 1000mg BID and add Lisinopril 20mg for blood pressure control.",
@@ -47,8 +48,9 @@
   },
   {
     "case_id": "CASE-002",
-    "case_title": "Clean Follow-Up Encounter (Auto-Approved)",
+    "case_title": "Clean Follow-Up Encounter (Straight-Through Approval)",
     "description": "Routine hypertension follow-up with completely normal renal baselines. Demonstrates straight-through automated cryptographic anchoring.",
+    "expected_verdict": "VERIFIED",
     "payload": {
       "physician_id": "DR-2184",
       "raw_notes": "52yo female for 6-month blood pressure review. Reports feeling well. Maintaining low sodium diet. Continue current regimen.",
@@ -77,6 +79,86 @@
         {
           "biomarker": "Serum Potassium",
           "value": "4.2",
+          "unit": "mEq/L",
+          "reference_range": "3.5-5.0",
+          "is_abnormal": false
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-003",
+    "case_title": "Acute Hyperkalemia & ACE-Inhibitor Alert",
+    "description": "Patient with elevated serum potassium (5.8 mEq/L) being initiated on Lisinopril 20mg. VeriCare Auditor halts the prescription due to fatal arrhythmia risk.",
+    "expected_verdict": "FLAGGED_REVIEW",
+    "payload": {
+      "physician_id": "DR-3102",
+      "raw_notes": "58yo male with uncontrolled stage 2 hypertension. BP 152/94 mmHg. Initiating Lisinopril 20mg daily. Patient instructed to follow up in 2 weeks.",
+      "lab_biomarkers": [
+        {
+          "biomarker": "Blood Pressure",
+          "value": "152/94",
+          "unit": "mmHg",
+          "reference_range": "< 120/80",
+          "is_abnormal": true
+        },
+        {
+          "biomarker": "Serum Potassium",
+          "value": "5.8",
+          "unit": "mEq/L",
+          "reference_range": "3.5-5.0",
+          "is_abnormal": true
+        },
+        {
+          "biomarker": "Serum Sodium",
+          "value": "138",
+          "unit": "mEq/L",
+          "reference_range": "135-145",
+          "is_abnormal": false
+        },
+        {
+          "biomarker": "eGFR",
+          "value": "58",
+          "unit": "mL/min/1.73m2",
+          "reference_range": "> 60",
+          "is_abnormal": true
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-004",
+    "case_title": "Dyslipidemia with Guideline Statin Therapy",
+    "description": "Cardiovascular risk reduction encounter with elevated LDL. Demonstrates multi-biomarker lipid panel grounding and statin prescription verification.",
+    "expected_verdict": "VERIFIED",
+    "payload": {
+      "physician_id": "DR-1088",
+      "raw_notes": "60yo female for cardiovascular risk assessment. High cholesterol noted. Starting Atorvastatin 20mg daily and dietary optimization.",
+      "lab_biomarkers": [
+        {
+          "biomarker": "Total Cholesterol",
+          "value": "248",
+          "unit": "mg/dL",
+          "reference_range": "< 200",
+          "is_abnormal": true
+        },
+        {
+          "biomarker": "LDL Cholesterol",
+          "value": "168",
+          "unit": "mg/dL",
+          "reference_range": "< 100",
+          "is_abnormal": true
+        },
+        {
+          "biomarker": "eGFR",
+          "value": "88",
+          "unit": "mL/min/1.73m2",
+          "reference_range": "> 60",
+          "is_abnormal": false
+        },
+        {
+          "biomarker": "Serum Potassium",
+          "value": "4.4",
           "unit": "mEq/L",
           "reference_range": "3.5-5.0",
           "is_abnormal": false
