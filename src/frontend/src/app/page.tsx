@@ -55,8 +55,12 @@ export default function HomePage() {
   // Modal State
   const [verifierModalOpen, setVerifierModalOpen] = useState(false);
 
+  // Mount State to avoid hydration mismatch
+  const [mounted, setMounted] = useState(false);
+
   // Initial Load
   useEffect(() => {
+    setMounted(true);
     async function init() {
       const health = await checkBackendHealth();
       setBackendConnected(health.status === "healthy");

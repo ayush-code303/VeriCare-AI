@@ -193,7 +193,7 @@ export const TamperProofVerifierModal: React.FC<TamperProofVerifierModalProps> =
               </div>
             </div>
 
-            <div className="text-[10px] font-mono opacity-75 shrink-0 text-right">
+            <div className="text-[10px] font-mono opacity-75 shrink-0 text-right" suppressHydrationWarning>
               {result.verified_at ? new Date(result.verified_at).toLocaleTimeString() : ""}
             </div>
           </div>
