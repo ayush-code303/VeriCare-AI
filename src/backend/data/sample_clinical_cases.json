@@ -1,0 +1,87 @@
+[
+  {
+    "case_id": "CASE-001",
+    "case_title": "Severe Renal Contraindication (High Drama Alert)",
+    "description": "Patient with uncontrolled diabetes and hidden acute renal failure. Prescribed Metformin, triggering VeriCare's Adversarial Auditor.",
+    "payload": {
+      "physician_id": "DR-4019",
+      "raw_notes": "64yo male patient presents for diabetic routine review. Feeling persistently fatigued. Glucose poorly managed. Plan to maintain Metformin 1000mg BID and add Lisinopril 20mg for blood pressure control.",
+      "lab_biomarkers": [
+        {
+          "biomarker": "Fasting Blood Glucose",
+          "value": "194",
+          "unit": "mg/dL",
+          "reference_range": "70-99",
+          "is_abnormal": true
+        },
+        {
+          "biomarker": "HbA1c",
+          "value": "9.4",
+          "unit": "%",
+          "reference_range": "< 5.7",
+          "is_abnormal": true
+        },
+        {
+          "biomarker": "Serum Creatinine",
+          "value": "2.8",
+          "unit": "mg/dL",
+          "reference_range": "0.7-1.3",
+          "is_abnormal": true
+        },
+        {
+          "biomarker": "eGFR",
+          "value": "24",
+          "unit": "mL/min/1.73m2",
+          "reference_range": "> 60",
+          "is_abnormal": true
+        },
+        {
+          "biomarker": "Serum Potassium",
+          "value": "5.6",
+          "unit": "mEq/L",
+          "reference_range": "3.5-5.0",
+          "is_abnormal": true
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "CASE-002",
+    "case_title": "Clean Follow-Up Encounter (Auto-Approved)",
+    "description": "Routine hypertension follow-up with completely normal renal baselines. Demonstrates straight-through automated cryptographic anchoring.",
+    "payload": {
+      "physician_id": "DR-2184",
+      "raw_notes": "52yo female for 6-month blood pressure review. Reports feeling well. Maintaining low sodium diet. Continue current regimen.",
+      "lab_biomarkers": [
+        {
+          "biomarker": "Fasting Blood Glucose",
+          "value": "92",
+          "unit": "mg/dL",
+          "reference_range": "70-99",
+          "is_abnormal": false
+        },
+        {
+          "biomarker": "Serum Creatinine",
+          "value": "0.9",
+          "unit": "mg/dL",
+          "reference_range": "0.7-1.3",
+          "is_abnormal": false
+        },
+        {
+          "biomarker": "eGFR",
+          "value": "94",
+          "unit": "mL/min/1.73m2",
+          "reference_range": "> 60",
+          "is_abnormal": false
+        },
+        {
+          "biomarker": "Serum Potassium",
+          "value": "4.2",
+          "unit": "mEq/L",
+          "reference_range": "3.5-5.0",
+          "is_abnormal": false
+        }
+      ]
+    }
+  }
+]

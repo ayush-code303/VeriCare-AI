@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: ankane/pgvector:latest
+    container_name: vericare_db
+    environment:
+      POSTGRES_USER: vericare_user
+      POSTGRES_PASSWORD: vericare_pass
+      POSTGRES_DB: vericare_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "vericare_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile
+    container_name: vericare_backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://vericare_user:vericare_pass@db:5432/vericare_db
+    ports:
+      - "8000:8000"
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+    driver: local
