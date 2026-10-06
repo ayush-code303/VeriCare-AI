@@ -313,10 +313,10 @@ VeriCare AI targets high-impact healthcare safety in India, directly qualifying 
 
 ## 12. Roadmap & Evaluation Benchmarks
 
-- **Phase 1 (Weeks 1–3):** Foundation, OCR ingestion, Safe Harbor de-identification, and pgvector knowledge base.
-- **Phase 2 (Weeks 4–6):** Dual-agent LangGraph cognitive core, atomic claim decomposition, and consensus engine.
-- **Phase 3 (Weeks 7–9):** Physician HITL audit dashboard with real-time green/amber/red diff highlighting.
-- **Phase 4 (Weeks 10–12):** RFC 8785 canonicalization, SHA-256 Merkle batching, Polygon smart contract deployment, and Cloud Run scaling.
+- **Phase 1 :** Foundation, OCR ingestion, Safe Harbor de-identification, and pgvector knowledge base.
+- **Phase 2 :** Dual-agent LangGraph cognitive core, atomic claim decomposition, and consensus engine.
+- **Phase 3 :** Physician HITL audit dashboard with real-time green/amber/red diff highlighting.
+- **Phase 4 :** RFC 8785 canonicalization, SHA-256 Merkle batching, Polygon smart contract deployment, and Cloud Run scaling.
 
 ---
 
